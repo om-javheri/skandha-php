@@ -1,0 +1,20 @@
+# Apache (shared hosting): the site's files as they are; the API and missing pages through index.php.
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options nosniff
+</IfModule>
+
+RewriteEngine On
+# Passes the admin key on to PHP (some hosts drop the header otherwise).
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteRule ^api/ index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# Settings for the server (or set them in the host's control panel):
+# SetEnv ADMIN_KEY choose-a-long-secret
+# SetEnv DATA_DIR /home/you/site-data

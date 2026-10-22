@@ -1,0 +1,9 @@
+{
+  "name": "site/skandha-php",
+  "description": "A site exported from UniversalIDE, with its own server.",
+  "type": "project",
+  "require": {
+    "php": ">=8.1",
+    "ext-pdo_sqlite": "*"
+  }
+}

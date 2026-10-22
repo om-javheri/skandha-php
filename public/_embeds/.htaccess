@@ -1,0 +1,4 @@
+# Exact copies of imported pages run only sandboxed.
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "sandbox allow-scripts allow-popups allow-popups-to-escape-sandbox"
+</IfModule>
